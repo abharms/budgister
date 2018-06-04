@@ -1,0 +1,43 @@
+<h1>My Register</h1>
+
+<h2>Total: {{balance}}</h2>
+<div class="row">
+	<div class="col-sm-1">
+		<h3 class="semi-bold">Date</h3>
+	</div>
+	<div class="col-sm-3">
+		<h3 class="semi-bold">Name</h3>
+	</div>
+	<div class="col-sm-3">
+		<h3 class="semi-bold">Description</h3>
+	</div>
+	<div class="col-sm-2">
+		<h3 class="semi-bold">Category</h3>
+	</div>
+	<div class="col-sm-1">
+		<h3 class="semi-bold">Debit/Credit</h3>
+	</div>
+</div>
+<div *ngFor="let entry of entries">
+	<app-entry
+			[entry]="entry">	
+	</app-entry>
+</div>
+
+<div class="row mgn-top30">
+	<div class="col-sm-3">
+		<input #date type="text" /><br>
+		<input #name type="text" /><br>
+		<input #description type="text" /><br>
+		<input #category type="text" /><br>
+		<input #amount type="text" /><br>
+		<select>
+			<option>Debit</option>
+			<option>Credit</option>
+		</select><br>
+		<button class="green-bg border-radius white-text setWidth50" (click)="onSaveClick(date.value, name.value, description.value, category.value, amount.value)">Save</button>
+	</div>
+
+
+
+</div>

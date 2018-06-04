@@ -1,1 +1,1791 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*-------------
+Color Variables
+--------------*/
+
+$blue: #2980b9;
+    $blueLight: lighten($blue, 16%);
+    $blueLighter: lighten($blue, 40%);
+    $blueDarker: darken($blue, 6%);
+    $blueDarkest: darken($blue, 16%);
+
+    //https://codepen.io/Cthulahoop/pen/boaFg?depth=everything&order=popularity&page=4&q=css+radial+gradient&show_forks=false
+    $blueLighterRadial: lighten($blue, 5%);
+    $blueDarkerRadial: darken($blue, 3%);
+    
+$card-border-gray: #d4d4d5;
+
+$dark: #23282D;
+    $darkLighter: lighten($dark, 6%);
+$facebookBlue: #3B5998;
+
+$gray: #E6E8E9;
+    $grayDark: darken($gray, 6%);
+    $grayDarker: darken($gray, 16%);
+    $grayDarkest: #8b8c8c;
+
+$green: #16a085;
+    $greenLighter: lighten($green, 22%);
+    $greenDarker: darken($green, 6%);
+    $greenDarkest: darken($green, 16%);
+
+    $greenLighterRadial: lighten($green, 5%);
+    $greenDarkerRadial: darken($green, 3%);
+
+$instagramRed: #D91642;
+
+$light-gray: #F6F8F8;
+    $lightGrayDarker: darken($light-gray, 6%);
+
+$limeGreen: #2ecc71;
+    $limeGreenDarker: darken($limeGreen, 6%);
+
+$orange: #F9690E;
+    $orangeDarker: darken($orange, 6%);
+    $orangeDarkest: darken($orange, 16%);
+    
+$pink: #D2527F;
+    $pinkDarker: darken($pink, 6%);
+    $pinkDarkest: darken($pink, 22%);
+
+$pinterest-red: #BD081C;
+$purple: #9b59b6;
+    $purpleDarker: darken($purple, 6%);
+    $purpleDarkest: darken($purple, 16%);
+    $purpleLighter: lighten($purple, 42%);
+
+    $purpleLighterRadial: lighten($purple, 5%);
+    $purpleDarkerRadial: darken($purple, 3%);
+
+$darkPurple: #674172;
+
+$red: #D91E18;
+  $redLight: lighten($red, 20%);
+  $redLighter: lighten($red, 40%);
+  $redDarker: darken($red, 6%);
+  $redDarkest: darken($red, 16%);
+
+  $redLighterRadial: lighten($red, 5%);
+  $redDarkerRadial: darken($red, 3%);
+
+
+$turquoise: #1abc9c;
+    $turquoiseDarker: darken($turquoise, 6%);
+
+$twitterBlue: #1DA1F2;
+
+$yellow: #FED36E;
+    $yellowDarker: darken($yellow, 6%);
+    $yellowDarkest: darken($yellow, 16%);
+
+$youtube-red: #FF0000;
+$white: #fff;
+    $whiteDarker: darken($white, 6%);
+
+/*--------------------
+  Global Styles
+---------------------*/
+
+//using these global selectors for tables 
+//that loop data in a div outside the component selector.
+//tables that loop within the component use the .table-row
+//class name and those styles are in the table.scss file
+.gray-stripe:nth-child(even) .t-row {
+    background-color: $white;
+}
+
+.gray-stripe:nth-child(odd) .t-row {
+    background-color: $gray;
+}
+
+.t-row {
+    border-bottom: 1px solid $card-border-gray;
+}
+
+.t-row {
+    // border-right: 1px solid $card-border-gray;
+    // border-left: 1px solid $card-border-gray;
+}
+
+
+html {
+    position: relative;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    //remove blue highlighting on mousedown
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none; 
+}
+
+.table td {
+    border: inherit !important;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: $light-gray !important;
+}
+
+//for FireFox
+@font-face {
+    font-family: 'FontAwesome';
+    src: local('FontAwesome');
+}
+
+@font-face {
+    font-family: 'Open_Sans';
+    src: url('/fonts/Open_Sans/OpenSans-Light.ttf');
+    
+}
+
+@font-face {
+    font-family: 'Open_Sans_Regular';
+    src: url('/fonts/Open_Sans/OpenSans-Regular.ttf');  
+}
+
+
+.semi-bold {
+    font-family: 'Open_Sans_Regular';
+}
+
+body {
+    background-color: $light-gray;
+    font-family: 'Open_Sans', sans-serif;
+    font-weight: 400;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+.spinnerIndex{   
+    height: 80px;
+    width: 80px;
+    border: 3px solid #d0d0d0;
+    border-top: 3px solid #8b8c8c;
+    border-radius: 100%;
+    
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right: 0;
+    margin: auto;
+    
+    animation: spin 0.6s infinite linear;
+}
+
+@keyframes spin {
+    from{
+        transform: rotate(0deg);
+    }to{
+        transform: rotate(360deg);
+    }
+}
+
+
+.pointer {
+    cursor: pointer;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+.cursor-text {
+    cursor: text;
+}
+
+.cursor-move {
+    cursor: move;
+}
+
+.cursor-context-menu {
+    cursor: context-menu;
+}
+
+a {
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+    font-weight: 300;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.17rem;
+}
+
+h4 {
+    font-size: 0.875rem;
+}
+
+hr {
+    border-color: $card-border-gray;
+}
+
+body a:hover {
+    text-decoration: none;
+}
+
+input,
+textarea {
+    border: 0.063rem solid $grayDarker;
+    border-radius: 0.250rem;
+    background-clip: padding-box;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+.ellipsis {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.scrollable {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    // overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#scrollbar-style::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: $light-gray;
+}
+
+#scrollbar-style::-webkit-scrollbar {
+    width: 5px;
+    background-color: $light-gray;
+}
+
+#scrollbar-style::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: $grayDark;
+}
+
+.setOpacityLow {
+    opacity: 0.2;
+}
+
+ul {
+    padding-left: 12px;
+}
+
+ul li {
+    list-style: none;
+}
+
+// ::-webkit-scrollbar {
+//     -webkit-appearance: none;
+//     width: 5px;
+// }
+// ::-webkit-scrollbar-thumb {
+//     border-radius: 4px;
+//     background-color: $gray;
+//     -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+// }
+
+/*-------------
+Helpers
+--------------*/
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.block {
+    display: block;
+}
+
+.in-block {
+    display: inline-block;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.container {
+    width: 97.5%;
+    margin: 0 auto;
+}
+
+.col-centered {
+    margin: 0 auto;
+}
+
+.box-shadow-bottom {
+    box-shadow: 0 3px 0 rgba(0,0,0,0.1);
+}
+
+.box-shadow-bottom-gray {
+    box-shadow: 0 3px 0 rgba(0,0,0,0.3);
+}
+
+.shadow {
+    box-shadow: 0 0.125em 0.313em 0 rgba(0, 0, 0, 0.16), 0 0.125em 0.625em 0 rgba(0, 0, 0, 0.12);
+}
+
+.shadow-wide {
+    box-shadow: 0 0.125em 4.313em 0 rgba(0, 0, 0, 0.36), 0 0.125em 0.625em 0 rgba(0, 0, 0, 0.12);
+}
+
+.setWidth100 {
+    width: 100%;
+}
+
+.setWidth75 {
+    width: 75%;
+}
+
+.setWidth50 {
+    width: 50%;
+}
+
+.setWidth49 {
+    width: 49%;
+}
+
+.setWidth25 {
+    width: 25%;
+}
+
+.setHeight100 {
+    height: 100%;
+}
+
+.setHeight50 {
+    height: 50%;
+}
+
+.card-border {
+    box-shadow: 0 0.063em 0.188em 0 $card-border-gray, 0 0 0 0.063em #d4d4d5;
+}
+
+.text-shadow {
+    text-shadow: 1px 1px #23282D;
+}
+
+.border-radius {
+    border-radius: 0.250em; //4px
+}
+
+.border-radius-md {
+    border-radius: 0.375em;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.z {
+    z-index: 99;
+}
+
+$measurements: ( 
+neg212: -13.250rem,
+neg59: -3.688rem,
+neg54: -3.375rem,
+neg45: -2.813rem,
+neg41: -2.563rem,
+neg39: -2.438em,
+neg36: -2.250rem,
+neg35: -2.188rem,
+neg33: 2.357rem,
+neg32: -2rem,
+neg30: -1.875rem,
+neg27: -1.688rem,
+neg26: -1.625rem,
+neg24: -1.500rem,
+neg23: -1.438rem,
+neg22: -1.375rem,
+neg20: -1.250rem,
+neg17: -1.063rem,
+neg16: -1rem,
+neg15: -0.938rem,
+neg14: -0.875rem,
+neg12: -0.750rem,
+neg11: -0.688rem,
+neg10: -0.625rem,
+neg8: -0.500rem,
+neg7: -0.438rem,
+neg6: -0.375rem,
+neg5: -0.313rem,
+neg4: -0.250rem,
+neg3: -0.188rem,
+neg2: -0.125rem,
+neg1: -0.63rem,
+0: 0rem,
+1: 0.063rem,
+2: 0.125rem,
+3: 0.188rem,
+4: 0.250rem,
+5: 0.313rem,
+6: 0.375rem,
+7: 0.438rem,
+8: 0.500rem,
+9: 0.563rem,
+10: 0.625rem,
+11: 0.688rem,
+12: 0.750rem,
+13: 0.813rem,
+14: 0.875rem,
+15: 0.938rem,
+16: 1rem,
+17: 1.063rem,
+18: 1.125rem,
+19: 1.188rem,
+20: 1.250rem,
+21: 1.313rem,
+22: 1.375rem,
+23: 1.438rem,
+24: 1.500rem,
+25: 1.563rem,
+26: 1.625rem,
+27: 1.688rem,
+28: 1.750rem,
+29: 2.071rem,
+30: 1.875rem,
+31: 1.938rem,
+32: 2rem,
+33: 2.063rem,
+34: 2.125rem,
+35: 2.188rem,
+36: 2.250rem,
+37: 2.313rem,
+38: 2.375rem,
+39: 2.438rem,
+40: 2.500rem,
+41: 2.563rem,
+42: 2.625rem,
+43: 2.688rem,
+44: 2.750rem,
+45: 2.813rem,
+46: 2.875rem,
+47: 2.938rem,
+48: 3.000rem,
+49: 3.063rem,
+50: 3.125rem,
+51: 3.188rem,
+52: 3.250rem,
+53: 3.313rem,
+54: 3.375rem,
+55: 3.438rem,
+56: 3.500rem,
+57: 3.563rem,
+59: 3.688rem,
+60: 3.750rem,
+62: 3.875rem,
+63: 3.938rem,
+64: 4rem,
+66: 4.125rem,
+67: 4.188rem,
+68: 4.25rem,
+70: 4.375rem,
+71: 4.438rem,
+72: 4.500rem,
+74: 4.625rem,
+76: 4.750rem,
+80: 5rem,
+82: 5.125rem,
+84: 5.250rem,
+85: 5.313rem,
+86: 5.375rem,
+88: 5.556rem,
+90: 5.625rem,
+96: 6.000rem,
+98: 6.125rem,
+100: 6.250rem,
+101: 6.313rem,
+104: 6.500rem,
+105: 6.563rem,
+108: 6.750rem,
+109: 6.813rem,
+110: 6.875rem,
+112: 7.031rem, //112.5
+116: 7.250rem,
+119: 7.438rem,
+124: 7.750rem,
+130: 8.125rem,
+133: 8.313rem,
+136: 8.500rem,
+138: 8.625rem,
+139: 8.688rem,
+140: 8.750rem,
+145: 9.063rem,
+147: 9.188rem,
+150: 9.375rem,
+155: 9.688rem,
+157: 9.813rem,
+162: 10.125rem,
+166: 10.375rem,
+167: 10.438rem,
+172: 10.750rem,
+173: 10.813rem,
+174: 10.875rem,
+175: 10.94rem,
+178: 11.125rem,
+182: 11.375rem,
+185: 11.56rem,
+187: 11.69rem,
+188: 11.750rem,
+192: 12rem,
+195: 12.188rem,
+200: 12.500rem,
+203: 12.688rem,
+208: 13.000rem,
+210: 13.125rem,
+214: 13.375rem,
+215: 13.43rem,
+216: 13.500rem,
+217: 13.563rem,
+220: 13.750rem,
+221: 13.813rem,
+222: 13.875rem,
+226: 14.125rem,
+229: 14.32rem,
+236: 14.750rem,
+241: 15.063rem,
+242: 15.125rem,
+248: 15.5rem,
+250: 15.625rem,
+255: 15.938rem,
+258: 16.125rem,
+262: 16.375rem,
+270: 16.875rem,
+274: 17.125rem,
+280: 17.500rem,
+284: 17.750rem,
+292: 18.25rem,
+299: 18.688rem,
+300: 18.750rem,
+310: 19.375rem,
+315: 19.688rem,
+328: 20.500rem,
+338: 21.125rem,
+345: 21.563rem,
+360: 22.500rem,
+366: 22.875rem,
+370: 23.125rem,
+375: 23.438rem,
+378: 23.625rem,
+384: 24.000rem,
+392: 24.500rem,
+400: 25.000rem,
+424: 26.5rem,
+426: 26.625rem,
+428: 26.750rem,
+440: 27.500rem,
+443: 27.688rem,
+444: 27.750rem,
+450: 28.125rem,
+472: 29.5rem,
+497: 31.063rem,
+500: 31.250rem,
+508: 31.750rem,
+550: 34.375rem,
+600: 37.500rem,
+630: 39.375rem,
+660: 41.250rem,
+680: 42.500rem,
+728: 45.5rem,
+782: 48.875rem);
+
+
+$pixelMeasurements: ( 
+    15: 15px,
+    18: 18px,
+    20: 20px,
+    36: 36px,
+    40: 40px,
+    60: 60px,
+    76: 76px,
+    90: 90px,
+);
+
+@each $size,
+$val in $pixelMeasurements {
+    .htpx#{$size} {
+        height: #{$val};
+    }
+
+    .wdthpx#{$size} {
+        width: #{$val};
+    }
+}
+
+
+/*loops through each measurement above, provides easy reusability*/
+
+@each $name,
+$val in $measurements {
+    /*Font-Size*/
+    .ft-size#{$name} {
+        font-size: #{$val} !important;
+    }
+    /*Margin*/
+    .mgn#{$name} {
+        margin: #{$val};
+    }
+    .mgn-top#{$name} {
+        margin-top: #{$val};
+    }
+    .mgn-right#{$name} {
+        margin-right: #{$val};
+    }
+    .mgn-bottom#{$name} {
+        margin-bottom: #{$val};
+    }
+    .mgn-left#{$name} {
+        margin-left: #{$val};
+    }
+    /*Padding*/
+    .pd#{$name} {
+        padding: #{$val};
+    }
+    .pd-top#{$name} {
+        padding-top: #{$val};
+    }
+    .pd-right#{$name} {
+        padding-right: #{$val};
+    }
+    .pd-bottom#{$name} {
+        padding-bottom: #{$val};
+    }
+    .pd-left#{$name} {
+        padding-left: #{$val};
+    }
+    /*Height*/
+    .ht#{$name} {
+        height: #{$val};
+    }
+
+    /*Max Height*/
+    .max-height#{$name} {
+        max-height: #{$val};
+    }
+    /*Min Height*/
+    .min-height#{$name} {
+        min-height: #{$val};
+    }
+    /*Width*/
+    .wdth#{$name} {
+        width: #{$val};
+    }
+    /*Line-Height*/
+    .ln-height#{$name} {
+        line-height: #{$val};
+    }
+    /*Absolute Positioning*/
+    .top#{$name} {
+        top: #{$val};
+    }
+    .right#{$name} {
+        right: #{$val};
+    }
+    .bottom#{$name} {
+        bottom: #{$val};
+    }
+    .left#{$name} {
+        left: #{$val};
+    }
+    
+}
+
+
+/*Text Color Classes*/
+
+.blue-text {
+    color: $blue !important;
+}
+    .blue-text-light {
+        color: $blueLight;
+    }
+
+    .blue-text-darkest {
+        color: $blueDarkest;
+    }
+
+.dark-text {
+    color: $dark;
+}
+
+.gray-text {
+    color: $gray !important;
+}
+
+    .gray-text-dark {
+        color: $grayDark;
+    }
+
+    .gray-text-darker {
+        color: $grayDarker;
+    }
+
+    .gray-text-darkest {
+        color: $grayDarkest;
+    }
+
+.green-text {
+    color: $green;
+}
+    .green-text-darker {
+        color: $greenDarker;
+    }
+
+.lime-green-text {
+    color: $limeGreen;
+}
+
+.orange-text {
+    color: $orange;
+}
+
+.pink-text {
+    color: $pink;
+}
+
+.purple-text {
+    color: $purple;
+}
+
+.red-text {
+    color: $red;
+}
+    .red-text-light {
+        color: $redLight;
+    }
+
+.saving-preloader-text {
+  color: $grayDarker;
+}
+
+.white-text {
+    color: $white !important;
+}
+
+.yellow-text {
+    color: $yellow;
+}
+
+
+/*Icon Color Classes*/
+
+.twitter-blue {
+    color: $twitterBlue;
+}
+
+.facebook-blue {
+    color: $facebookBlue;
+}
+
+.instagram-red {
+    color: $instagramRed;
+}
+
+.pinterest-red {
+    color: $pinterest-red;
+}
+
+.youtube-red {
+    color: $youtube-red;
+}
+
+.icon-black {
+    color: black;
+}
+
+.money-green {
+    color: $greenDarker;
+}
+
+
+/*Background Color Classes*/
+
+.blue-bg {
+    background-color: $blue !important;
+}
+
+    .blue-bg-light {
+        background-color: $blueLight;
+    }
+
+    .blue-bg-lighter {
+        background-color: $blueLighter;
+    }
+
+    .blue-bg-darker {
+        background-color: $blueDarker;
+    }
+
+    .blue-bg-darkest {
+        background-color: $blueDarkest !important;
+    }
+
+    .blue-bg-radial {
+        background: radial-gradient(ellipse farthest-corner,
+            $blueLighterRadial 0%, $blueDarkerRadial 100%);
+    }
+
+button.blue-bg:hover,
+.blue-bg a:hover {
+    background-color: $blueDarker !important;
+}
+
+    button.blue-bg-darkest:hover {
+        background-color: $blueDarker !important;
+    }
+
+button.green-bg:hover,
+.green-bg a:hover {
+    background-color: $greenDarker !important;
+}
+
+button.orange-bg:hover,
+.orange-bg a:hover {
+    background-color: $orangeDarker !important;
+}
+
+
+button.yellow-bg:hover,
+.yellow-bg a:hover {
+    background-color: $yellowDarker !important;
+}
+
+.dark-bg {
+    background-color: $dark;
+}
+
+.dark-bg-light {
+    background-color: $darkLighter;
+}
+
+.gray-bg {
+    background-color: $gray;
+}
+    .gray-bg-dark {
+      background-color: $grayDark;
+    }
+
+    .gray-bg-darker {
+        background-color: $grayDarker;
+    }
+
+    .gray-bg-darkest {
+        background-color: $grayDarkest;
+    }
+    
+    button.gray-bg:hover {
+        background-color: $grayDark;
+    }
+
+    button.gray-bg-dark:hover {
+        background-color: $grayDarker;
+    }
+
+    button.gray-bg-darker:hover {
+        background-color: darken($grayDarker, 6%);
+    }
+
+    button.gray-bg-darkest:hover {
+        background-color: darken($grayDarkest, 6%);
+    }
+
+.green-bg {
+    background-color: $green;
+}
+
+    .green-bg-lighter {
+        background-color: $greenLighter;
+    }
+
+    .green-bg-darker {
+        background-color: $greenDarker;
+    }
+
+    .green-bg-dark {
+        background-color: $greenDarkest;
+    }
+
+    .green-bg-radial {
+        background: radial-gradient(ellipse farthest-corner,
+            $greenLighterRadial 0%, $greenDarkerRadial 100%);
+    }
+
+    .green-bg-radial a:hover {
+        background-color: $greenDarker !important;
+    }
+
+.limeGreen-bg {
+    background-color: $limeGreen;
+}
+
+    .limeGreen-blue-bg-darkest-gradient {
+        background: linear-gradient(80deg, $limeGreen, $blueDarkest);
+    }
+
+button.limeGreen-bg:hover {
+    background-color: $limeGreenDarker;
+}
+
+button.purple-bg:hover,
+.purple-bg a:hover {
+    background-color: $purpleDarker !important;
+}
+
+button.light-gray-bg:hover {
+    background-color: $lightGrayDarker !important;
+}
+
+.lt-gray-bg {
+    background-color: $light-gray !important;
+}
+
+.purple-bg {
+    background-color: $purple;
+}
+
+    .dark-purple-bg {
+        background-color: $darkPurple;
+    }
+
+    .purple-bg-darkest {
+        background-color: $purpleDarkest;
+    }
+
+    .purple-bg-light {
+        background-color: $purpleLighter;
+    }
+
+    .purple-bg-radial {
+        background: radial-gradient(ellipse farthest-corner,
+            $purpleLighterRadial 0%, $purpleDarkerRadial 100%);
+    }
+
+.orange-bg {
+    background-color: $orange;
+}
+
+.orange-bg-dark {
+    background-color: $orangeDarker;
+}
+
+.pink-bg {
+    background-color: $pink;
+}
+    .pink-bg-darkest {
+        background-color: $pinkDarkest;
+    }
+
+button.pink-bg:hover {
+    background-color: $pinkDarker;
+}
+
+button.red-bg:hover,
+.red-bg a:hover {
+    background-color: $redDarker !important;
+}
+
+// button.red-bg-light:hover {
+//     background-color: $red !important;
+// }
+
+.red-bg {
+    background-color: $red !important;
+}
+    .red-bg-light {
+        background-color: $redLight;
+    }
+
+    .red-bg-lighter {
+        background-color: $redLighter;
+    }
+
+    .red-bg-darkest {
+        background-color: $redDarkest !important;
+    }
+
+    .red-bg-radial {
+        background: radial-gradient(ellipse farthest-corner,
+            $redLighterRadial 0%, $redDarkerRadial 100%);
+    }
+
+.transparent-bg {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.turquoise-bg {
+    background-color: $turquoise;
+}
+
+button.turquoise-bg:hover {
+    background-color: $turquoiseDarker;
+}
+
+.white-bg {
+    background-color: $white;
+}
+
+.yellow-bg {
+    background-color: $yellow;
+}
+    .yellow-bg-darker {
+        background-color: $yellowDarker;
+    }
+ 
+    .yellow-bg-darkest {
+        background-color: $yellowDarkest;
+    }
+
+.blue-green-bg-gradient {
+    background: linear-gradient( 90deg, $blue, $turquoise);
+}
+
+.green-limeGreen-bg-gradient {
+    background: linear-gradient( 80deg, $green, $limeGreen);
+}
+
+
+
+.orange-yellow-bg-gradient {
+    background: linear-gradient( 80deg, $orange, $yellow);
+}
+
+.purple-blue-bg-gradient {
+    background: linear-gradient( 80deg, $purple, $blue);
+}
+
+.red-yellow-bg-gradient {
+    background: linear-gradient( 80deg, $red, $yellow);
+}
+
+
+/*Hover Color Classes*/
+
+.blue-bg-hover:hover {
+    background-color: $blue;
+}
+
+.white-text-hover:hover {
+    color: $white;
+}
+
+
+/*Border Color Classes*/
+
+.white-border {
+    border-color: $white;
+}
+
+.dark-border {
+    border-color: $dark;
+}
+
+.lime-green-border {
+    border-color: $limeGreen;
+}
+
+.lt-gray-border {
+    border-color: $light-gray;
+}
+
+.gray-border {
+    border-color: $gray;
+}
+
+.gray-border-darker {
+    border-color: $grayDark;
+}
+
+.gray-border-darkest {
+    border-color: $grayDarker !important;
+}
+
+.card-gray-border {
+    border-color: $card-border-gray;
+}
+
+.red-border {
+    border-color: $red;
+}
+    .red-border-light {
+        border-color: $redLight;
+    }
+
+.blue-border {
+    border-color: $blue;
+}
+
+.yellow-border {
+    border-color: $yellow;
+}
+
+.green-border {
+    border-color: $green;
+}
+
+.purple-border {
+    border-color: $purple;
+}
+
+
+/*Medium Outline Button Classes*/
+
+.outline-buttons a {
+    transition: all 0.1s ease-in-out;
+    display: inline-block;
+}
+
+.outline-buttons a:hover {
+    color: $dark;
+    border-color: $dark;
+}
+
+
+/*Buttons*/
+
+button {
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    padding: 0.500em 0;
+    border: none;
+}
+
+button:focus {
+    outline: 0;
+}
+
+
+
+/*--------------------
+  Components
+---------------------*/
+
+
+/*Styles for Playlist Item Preview Component*/
+
+.preview-active {
+    background-color: $purpleDarkest !important;
+}
+
+
+
+
+
+/*Overlay & Disabled*/
+
+.overlay {
+    
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.2s;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.overlay:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.disabled {
+    color: $grayDarker !important;
+}
+
+.disabled-overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.7);
+}
+
+.modal-overlay {
+    opacity:    0.5; 
+    background: #23282D; 
+    width:      100%;
+    height:     100%; 
+    top:        0; 
+    left:       0; 
+    position:   fixed;
+    z-index: 110;
+}
+
+.setDisabledZ {
+    z-index: 102;
+}
+
+.setDeletedZ {
+    z-index: 103;
+}
+
+
+/*Toggle Switch*/
+
+@media only screen {
+    .toggleSwitch {
+        display: inline-block;
+        height: 18px;
+        position: relative;
+        overflow: visible;
+        padding: 0;
+        cursor: pointer;
+        width: 40px
+    }
+    .toggleSwitch * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .toggleSwitch>span {
+        line-height: 20px;
+        height: 20px;
+        vertical-align: middle;
+    }
+    .toggleSwitch input:focus~a,
+    .toggleSwitch input:focus+label {
+        outline: none;
+    }
+    .toggleSwitch input {
+        position: absolute;
+        opacity: 0;
+        z-index: 5;
+    }
+    .toggleSwitch>span {
+        position: absolute;
+        left: -50px;
+        width: 100%;
+        margin: 0;
+        padding-right: 50px;
+        text-align: left;
+        white-space: nowrap;
+    }
+    .toggleSwitch>span span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 5;
+        display: block;
+        width: 50%;
+        margin-left: 50px;
+        text-align: left;
+        font-size: 0.9em;
+        width: 100%;
+        left: 15%;
+        top: -1px;
+        opacity: 0;
+    }
+    .toggleSwitch a {
+        position: absolute;
+        right: 50%;
+        top: -1px;
+        z-index: 4;
+        display: block;
+        height: 100%;
+        padding: 0;
+        left: 2px;
+        width: 18px;
+        background-color: #fff;
+        border: 1px solid #CCC;
+        border-radius: 100%;
+        -webkit-transition: all 0.2s ease-out;
+        -moz-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+    .toggleSwitch>span span:first-of-type {
+        color: #ccc;
+        opacity: 1;
+        left: 45%;
+    }
+    .toggleSwitch>span:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 50px;
+        top: -2px;
+        background-color: #fafafa;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        -webkit-transition: all 0.2s ease-out;
+        -moz-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out;
+    }
+    .toggleSwitch input:checked~a {
+        border-color: #fff;
+        left: 100%;
+        margin-left: -8px;
+    }
+    .toggleSwitch input:checked~span:before {
+        border-color: $limeGreen;
+        box-shadow: inset 0 0 0 30px $limeGreen;
+    }
+    .toggleSwitch input:checked~span span:first-of-type {
+        opacity: 0;
+    }
+    .toggleSwitch input:checked~span span:last-of-type {
+        opacity: 1;
+        color: #fff;
+    }
+    /* Switch Sizes */
+    .toggleSwitch.large {
+        width: 60px;
+        height: 27px;
+    }
+    .toggleSwitch.large a {
+        width: 27px;
+    }
+    .toggleSwitch.large>span {
+        height: 29px;
+        line-height: 28px;
+    }
+    .toggleSwitch.large input:checked~a {
+        left: 41px;
+    }
+    .toggleSwitch.large>span span {
+        font-size: 1.1em;
+    }
+    .toggleSwitch.large>span span:first-of-type {
+        left: 50%;
+    }
+    .toggleSwitch.xlarge {
+        width: 80px;
+        height: 36px;
+    }
+    .toggleSwitch.xlarge a {
+        width: 36px;
+    }
+    .toggleSwitch.xlarge>span {
+        height: 38px;
+        line-height: 37px;
+    }
+    .toggleSwitch.xlarge input:checked~a {
+        left: 52px;
+    }
+    .toggleSwitch.xlarge>span span {
+        font-size: 1.4em;
+    }
+    .toggleSwitch.xlarge>span span:first-of-type {
+        left: 50%;
+    }
+}
+
+
+/*--------------------------
+ Date Picker Custom Styles
+---------------------------*/
+
+.mydp {
+    border-radius: 0.250rem !important;
+    border: 1px solid $grayDarker !important;
+    // height: 2.250rem !important;
+}
+
+.mydp input {    
+    height: 2.125rem !important;
+    font-size: 0.875rem !important;
+}
+
+.mydp .btnpicker {
+    height: initial !important;
+}
+
+.mydp .btnpicker:focus {
+    background: none !important;
+}
+
+.mydp .btnpickerenabled:hover {
+    color: $dark !important;
+    background-color: initial !important;
+}
+
+.mydp .sunday {
+    color: $red !important;
+}
+
+.mydp .daycell {
+    color: $blue !important;
+}
+
+.mydp .weekdaytitle,
+.mydp .icon-mydpleft,
+.mydp .icon-mydpright,
+.mydp .headermonthtxt {
+    color: $dark !important;
+}
+
+.mydp .caltable thead {
+    background-color: $gray !important;
+}
+
+
+.mydp .selectorarrow::after,
+.mydp .selectorarrow::before {
+    border: none !important;
+}
+
+.mydp .btnleftborder {
+    border-left: none !important;
+}
+
+.mydp .highlight {
+    color: $red !important;
+}
+
+.mydp .selbtngroup {
+    height: 2.250rem !important;
+}
+
+.mydp .selectiongroup {
+    background-color: initial !important;
+}
+
+
+/*--------------------
+ Pagination Styles
+---------------------*/
+
+.pagination .ngx-pagination .current {
+    background: $blueDarkest;
+    border-radius: 0.250em;
+}
+
+.pagination .ngx-pagination a:hover {
+    background-color: $grayDark;
+    color: $blue;
+    border-radius: 0.250em;
+}
+
+.pagination ul,
+.pagination ul .pagination-previous {
+    padding-left: 0 !important;
+}
+
+
+/*--------------------
+ Tooltip Styles
+---------------------*/
+
+
+/* START TOOLTIP STYLES */
+
+[tooltip] {
+    // position: fixed;
+
+    /* opinion 1 */
+}
+
+
+/* Applies to all tooltips */
+
+[tooltip]::before,
+[tooltip]::after {
+    text-transform: none;
+    /* opinion 2 */
+    font-size: .9em;
+    /* opinion 3 */
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    display: none;
+    opacity: 0;
+}
+
+[tooltip]::before {
+    content: '';
+    border: 5px solid transparent;
+    /* opinion 4 */
+    z-index: 1001;
+    /* absurdity 1 */
+}
+
+[tooltip]::after {
+    content: attr(tooltip);
+    /* magic! */
+    /* most of the rest of this is opinion */
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    /* 
+    Let the content set the size of the tooltips 
+    but this will also keep them from being obnoxious
+    */
+    min-width: 3em;
+    // max-width: 21em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 1ch 1.5ch;
+    border-radius: .3ch;
+    box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
+    background: #333;
+    color: #fff;
+    z-index: 1000;
+    /* absurdity 2 */
+}
+
+
+/* Make the tooltips respond to hover */
+
+[tooltip]:hover::before,
+[tooltip]:hover::after {
+    display: block;
+}
+
+
+/* don't show empty tooltips */
+
+[tooltip='']::before,
+[tooltip='']::after {
+    display: none !important;
+}
+
+
+/* FLOW: UP */
+
+[tooltip]:not([flow])::before,
+[tooltip][flow^="up"]::before {
+    bottom: 100%;
+    border-bottom-width: 0;
+    border-top-color: #333;
+}
+
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::after {
+    bottom: calc(100% + 5px);
+}
+
+[tooltip]:not([flow])::before,
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::before,
+[tooltip][flow^="up"]::after {
+    left: 50%;
+    transform: translate(-50%, -.5em);
+}
+
+
+/* FLOW: DOWN */
+
+[tooltip][flow^="down"]::before {
+    top: 100%;
+    border-top-width: 0;
+    border-bottom-color: #333;
+}
+
+[tooltip][flow^="down"]::after {
+    top: calc(100% + 5px);
+}
+
+[tooltip][flow^="down"]::before,
+[tooltip][flow^="down"]::after {
+    left: 50%;
+    transform: translate(-50%, .5em);
+}
+
+
+/* FLOW: LEFT */
+
+[tooltip][flow^="left"]::before {
+    top: 50%;
+    border-right-width: 0;
+    border-left-color: #333;
+    left: calc(0em - 5px);
+    transform: translate(-.5em, -50%);
+}
+
+[tooltip][flow^="left"]::after {
+    top: 50%;
+    right: calc(100% + 5px);
+    transform: translate(-.5em, -50%);
+}
+
+
+/* FLOW: RIGHT */
+
+[tooltip][flow^="right"]::before {
+    top: 50%;
+    border-left-width: 0;
+    border-right-color: #333;
+    right: calc(0em - 5px);
+    transform: translate(.5em, -50%);
+}
+
+[tooltip][flow^="right"]::after {
+    top: 50%;
+    left: calc(100% + 5px);
+    transform: translate(.5em, -50%);
+}
+
+
+/* KEYFRAMES */
+
+@keyframes tooltips-vert {
+    to {
+        opacity: .9;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes tooltips-horz {
+    to {
+        opacity: .9;
+        transform: translate(0, -50%);
+    }
+}
+
+
+/* FX All The Things */
+
+[tooltip]:not([flow]):hover::before,
+[tooltip]:not([flow]):hover::after,
+[tooltip][flow^="up"]:hover::before,
+[tooltip][flow^="up"]:hover::after,
+[tooltip][flow^="down"]:hover::before,
+[tooltip][flow^="down"]:hover::after {
+    animation: tooltips-vert 300ms ease-out forwards;
+}
+
+[tooltip][flow^="left"]:hover::before,
+[tooltip][flow^="left"]:hover::after,
+[tooltip][flow^="right"]:hover::before,
+[tooltip][flow^="right"]:hover::after {
+    animation: tooltips-horz 300ms ease-out forwards;
+}
+
+.bounce-top {
+    -webkit-animation: bounce-top 0.9s both;
+    -moz-animation: bounce-top 0.9s both;
+    animation: bounce-top 0.9s both;
+}
+
+
+
+
+/**
+ * ----------------------------------------
+ * animation fade-in-up
+ * ----------------------------------------
+ */
+
+.fadeInUp {
+        animation-name: fade-in-up;
+        animation-duration: 0.4s;
+        animation-fill-mode: both;
+        animation-timing-function: cubic-bezier(0.2, 0.3, 0.25, 0.9);
+        animation-delay: 150ms;
+}
+
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 12px, 0)
+    }
+    50% {
+        // opacity: 0.9;
+    }
+    100% {
+        opacity: 1;
+        transform: none
+    }
+}
+
+
+
+
+
+/*--------------------
+  Media Queries
+---------------------*/
+
+@media screen and (max-width: 1419px) {
+     :root {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (min-width: 1420px) {
+     :root {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (min-width: 1700px) {
+     :root {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    body {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .box {
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .showOnMobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .mobileMargin {
+        margin-top: 24px;
+    }
+    .hideOnMobile {
+        display: none;
+    }
+}
